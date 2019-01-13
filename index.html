@@ -19,6 +19,9 @@
         <input type="file" id="files" name="files[]" style="width: 200px;" multiple />
         <input type="button" id="reload" value="reload">
         <input type="button" id="clear" value="clear">
+        &nbsp&nbsp&nbsp&nbsp
+        <input type="button" id="preview1" value="预览1">
+        <input type="button" id="preview2" value="预览2">
     </p>
 
     <canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;">
@@ -26,6 +29,7 @@
     </canvas>
 </div>
 <div class="footer">
+    <p>Use W A S D Q E to rotate model.</p>
     Developed by Tmn07
 </div>
 
@@ -62,6 +66,21 @@ $(document).keydown(function(event){
         model_rotate(RotateMat);
     }
 })
+
+$("#preview1").click(function(){
+    $.get("./model/box6.obj",function(data){
+        model_display(data);
+        file_string = data;
+    })
+})
+
+$("#preview2").click(function(){
+    $.get("./model/f-16.obj",function(data){
+        model_display(data);
+        file_string = data;
+    })
+})
+
 
 $("#reload").click(function(){
     model_display(file_string);
